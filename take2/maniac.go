@@ -44,7 +44,7 @@ func get2(ctx context.Context, url string, ch chan<- result2) {
 }
 
 func first(ctx context.Context, urls []string) (*result2, error) {
-	results := make(chan result2)
+	results := make(chan result2, len(urls))
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
